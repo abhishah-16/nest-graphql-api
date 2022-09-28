@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Donation {
+model donation {
   id          Int      @id @default(autoincrement())
   count       Int
   displayName String
