@@ -23,8 +23,13 @@ input UpdateDonationInput {
   id: Int!
 }
 
+input OrderbyParam{
+  field: String
+  direction: String
+}
+
 type Query {
-  donations: [Donation!]!
+  donations(orderBy:OrderbyParam): [Donation!]!
   donation(id: Int!): Donation
 }
 

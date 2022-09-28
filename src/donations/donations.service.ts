@@ -15,9 +15,16 @@ export class DonationsService {
     return donation
   }
 
-  async findAll() {
-    const donations = await this.prisma.donation.findMany()
-    return donations
+  async findAll(orderBy?: { field?: string; direction?: string }) {
+    if (orderBy === undefined) {
+      const donations = await this.prisma.donation.findMany()
+      return donations
+    } else {
+      const donations = await this.prisma.donation.findMany({
+        orderBy: { [orderBy.field]: orderBy.direction }
+      })
+      return donations
+    }
   }
 
   async findOne(id: number) {
