@@ -15,7 +15,16 @@ export class DonationsService {
     return donations
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} donation`;
+  async findOne(id: number) {
+    const donation = await this.prisma.donation.findUnique({
+      where: {
+        id: id
+      }
+    })
+    if (!donation) {
+      throw new Error('Donation does not exists')
+    }
+    return donation
   }
 }
+
