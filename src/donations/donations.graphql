@@ -1,4 +1,4 @@
-scalar DateTime
+# scalar DateTime
 type Donation {
   id: Int!
   count: Int!
@@ -7,7 +7,7 @@ type Donation {
   mobile: String
   team: String
   message: String
-  createdAt: DateTime
+  createdAt: String
 }
 
 input CreateDonationInput {
@@ -17,7 +17,7 @@ input CreateDonationInput {
   mobile: String
   team: String
   message: String
-  createdAt: DateTime
+  createdAt: String
 }
 
 input UpdateDonationInput {
