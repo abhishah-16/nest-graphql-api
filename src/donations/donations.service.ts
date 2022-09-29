@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
-import { CreateDonationInput } from './dto/create-donation.input';
-import { UpdateDonationInput } from './dto/update-donation.input';
 
 @Injectable()
 export class DonationsService {
+  
   constructor(private prisma: PrismaService) { }
 
   create(createDonationInput: Prisma.donationCreateInput) {
@@ -17,7 +16,9 @@ export class DonationsService {
 
   async findAll(orderBy?: { field?: string; direction?: string }) {
     if (orderBy === undefined) {
-      const donations = await this.prisma.donation.findMany()
+      const donations = await this.prisma.donation.findMany({
+        orderBy: { 'createdAt': 'desc' }
+      })
       return donations
     } else {
       const donations = await this.prisma.donation.findMany({
