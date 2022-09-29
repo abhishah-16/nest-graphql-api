@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { DonationsService } from './donations.service';
-import { CreateDonationInput } from './dto/create-donation.input';
 
 @Resolver('Donation')
 export class DonationsResolver {
