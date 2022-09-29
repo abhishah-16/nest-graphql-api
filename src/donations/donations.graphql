@@ -10,6 +10,14 @@ type Donation {
   createdAt: DateTime
 }
 
+type Result{
+  total: Int!
+}
+
+type Subscription{
+  totalUpdate: Result
+}
+
 input CreateDonationInput {
   count: Int!
   displayName: String!
@@ -31,6 +39,7 @@ input OrderbyParam{
 type Query {
   donations(orderBy:OrderbyParam): [Donation!]!
   donation(id: Int!): Donation
+  totalDonation: Int!
 }
 
 type Mutation {

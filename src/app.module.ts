@@ -14,7 +14,11 @@ import { DateTimeResolver } from "graphql-scalars"
       plugins: [ApolloServerPluginLandingPageLocalDefault],
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
-      resolvers: { DateTime: DateTimeResolver }
+      resolvers: { DateTime: DateTimeResolver },
+      subscriptions: {
+        'graphql-ws': true,
+        'graphql-transport-ws': true
+      }
     }),
     DonationsModule],
   controllers: [AppController],
