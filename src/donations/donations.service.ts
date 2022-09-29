@@ -4,7 +4,7 @@ import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class DonationsService {
-  
+
   constructor(private prisma: PrismaService) { }
 
   create(createDonationInput: Prisma.donationCreateInput) {
@@ -38,6 +38,15 @@ export class DonationsService {
       throw new Error('Donation does not exists')
     }
     return donation
+  }
+
+  async getTotal() {
+    const response = await this.prisma.donation.aggregate({
+      _sum: {
+        count: true
+      }
+    })
+    return response._sum.count
   }
 }
 
